@@ -19,6 +19,14 @@ struct Cell {
     init(x: Int, y: Int) {
         self.x = x
         self.y = y
+    func isNeighbor(of cell: Cell) -> Bool {
+        let distance = (abs(self.x - cell.x), abs(self.y - cell.y))
+        switch distance {
+        case (1, 1), (1, 0), (0, 1):
+            return true
+        default:
+            return false
+        }
     }
 }
 
