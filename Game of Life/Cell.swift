@@ -8,17 +8,36 @@ struct Cell {
     let id = UUID()
     
     enum State {
-        case Alive
-        case Dead
+        case alive
+        case dead
+        
+        var color: UIColor {
+            switch self {
+            case .alive:
+                return .green
+            case .dead:
+                return .white
+            }
+        }
     }
     
     let x: Int, y: Int
 
-    var state: State = .Dead
+    var state: State
     
     init(x: Int, y: Int) {
         self.x = x
         self.y = y
+        // Randomly decide whether the cell begins as dead or alive.
+        switch arc4random_uniform(2) {
+        case 1:
+            self.state = .alive
+
+        default:
+            self.state = .dead
+        }
+    }
+    
     func isNeighbor(of cell: Cell) -> Bool {
         let distance = (abs(self.x - cell.x), abs(self.y - cell.y))
         switch distance {
@@ -49,7 +68,7 @@ extension Cell: Renderable {
                              y: CGFloat(self.y) * Cell.Length)
         let size = CGSize(width: Cell.Length, height: Cell.Length)
         view.frame = CGRect(origin: origin, size: size)
-        view.backgroundColor = UIColor.random
+        view.backgroundColor = self.state.color
         return view
     }
 }
