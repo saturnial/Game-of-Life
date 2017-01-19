@@ -1,6 +1,6 @@
 import UIKit
 
-struct Cell {
+class Cell {
     
     static let Length = UIScreen.main.bounds.width /
         CGFloat(World.Dimension)
