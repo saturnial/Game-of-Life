@@ -3,18 +3,16 @@ import UIKit
 class ViewController: UIViewController {
     
     let world = World()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+
         self.view.addSubview(world.makeView())
+        
+        Timer.scheduledTimer(timeInterval: 1,
+                             target: self.world,
+                             selector: #selector(self.world.tick),
+                             userInfo: nil,
+                             repeats: true)
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-
 }
-
