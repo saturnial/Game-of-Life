@@ -5,7 +5,7 @@ struct Cell {
     static let Length = UIScreen.main.bounds.width /
         CGFloat(World.Dimension)
     
-    let id = UUID()
+    fileprivate let id = UUID()
     
     enum State {
         case alive
@@ -21,7 +21,7 @@ struct Cell {
         }
     }
     
-    let x: Int, y: Int
+    fileprivate let x: Int, y: Int
 
     var state: State
     
