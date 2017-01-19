@@ -1,18 +1,13 @@
-//
-//  ViewController.swift
-//  Game of Life
-//
-//  Created by Kayvon Tehranian on 1/19/17.
-//  Copyright © 2017 Loki. All rights reserved.
-//
-
 import UIKit
 
 class ViewController: UIViewController {
+    
+    let world = World()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        self.view.addSubview(world.makeView())
     }
 
     override func didReceiveMemoryWarning() {
