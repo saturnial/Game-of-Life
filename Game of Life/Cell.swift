@@ -2,11 +2,17 @@ import UIKit
 
 class Cell {
     
+    /**
+     A constant representing the cell's length given the screen's width and the
+     dimensions of the World in which it exists.
+     */
     static let Length = UIScreen.main.bounds.width /
         CGFloat(World.Dimension)
     
+    /// The unique identifier of this cell.
     fileprivate let id = UUID()
-    
+
+    /// Represents an exhaustive list of possible states a cell can be in.
     enum State {
         case alive
         case dead
@@ -21,13 +27,16 @@ class Cell {
         }
     }
     
+    /// The x and y coordinates of this cell.
     fileprivate let x: Int, y: Int
 
+    /// Whether this cell is dead or alive.
     var state: State
     
     init(x: Int, y: Int) {
         self.x = x
         self.y = y
+
         // Randomly decide whether the cell begins as dead or alive.
         switch arc4random_uniform(2) {
         case 1:
