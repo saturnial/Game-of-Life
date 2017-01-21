@@ -8,8 +8,10 @@ class ViewController: UIViewController {
         case stopped
     }
     
+    /// The timer object that iterates the world tick-by-tick.
     var timer: Timer?
     
+    /// The current state of the world simulator.
     var state: State = .stopped {
         didSet {
             
