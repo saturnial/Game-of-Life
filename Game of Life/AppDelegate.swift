@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         self.window = UIWindow(frame: UIScreen.main.bounds)
         
-        self.window?.rootViewController = ViewController(nibName: nil, bundle: nil)
+        self.window?.rootViewController = WorldSimulatorViewController(nibName: nil, bundle: nil)
         self.window?.makeKeyAndVisible()
         
         // Override point for customization after application launch.

@@ -1,6 +1,6 @@
 import UIKit
 
-class ViewController: UIViewController {
+class WorldSimulatorViewController: UIViewController {
     
     enum State {
         case playing
