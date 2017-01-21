@@ -1,9 +1,5 @@
 import UIKit
 
-protocol Renderable {
-    func makeView() -> UIView
-}
-
 class World {
     
     static let Dimension = 20
