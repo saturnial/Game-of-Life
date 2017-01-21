@@ -25,6 +25,16 @@ class Cell {
                 return .white
             }
         }
+        
+        static func generateRandomly() -> State {
+            switch arc4random_uniform(2) {
+            case 1:
+                return .alive
+                
+            default:
+                return .dead
+            }
+        }
     }
     
     /// The x and y coordinates of this cell.
@@ -36,15 +46,7 @@ class Cell {
     init(x: Int, y: Int) {
         self.x = x
         self.y = y
-
-        // Randomly decide whether the cell begins as dead or alive.
-        switch arc4random_uniform(2) {
-        case 1:
-            self.state = .alive
-
-        default:
-            self.state = .dead
-        }
+        self.state = State.generateRandomly()
     }
     
     func isNeighbor(of cell: Cell) -> Bool {

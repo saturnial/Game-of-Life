@@ -32,6 +32,13 @@ class World {
         self.cellToNeighboringCells = accumualtorOfCellsToNeighboringCells
     }
     
+    func reset() {
+        for (cell, view) in self.cellToViews {
+            cell.state = Cell.State.generateRandomly()
+            view.backgroundColor = cell.state.color
+        }
+    }
+    
     /**
      Any live cell with fewer than two live neighbours dies, as if caused by underpopulation.
      Any live cell with two or three live neighbours lives on to the next generation.
@@ -92,10 +99,8 @@ class World {
 extension World: Renderable {
     func makeView() -> UIView {
         let view = UIView()
-        let length = UIScreen.main.bounds.width
-        let buffer = UIScreen.main.bounds.height - (Cell.Length * CGFloat(World.Dimension))
-        view.frame = CGRect(origin: CGPoint(x: 0, y: buffer),
-                            size: CGSize(width: length, height: length))
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         for subView in self.cellToViews.values {
             view.addSubview(subView)
         }
