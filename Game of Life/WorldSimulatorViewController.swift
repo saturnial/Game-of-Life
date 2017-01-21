@@ -2,7 +2,8 @@ import UIKit
 
 class WorldSimulatorViewController: UIViewController {
     
-    enum State {
+    /// Represents the comprehensive set of states for the world simulator.
+    fileprivate enum State {
         case playing
         case paused
         case stopped
@@ -12,7 +13,7 @@ class WorldSimulatorViewController: UIViewController {
     var timer: Timer?
     
     /// The current state of the world simulator.
-    var state: State = .stopped {
+    fileprivate var state: State = .stopped {
         didSet {
             
             switch self.state {
